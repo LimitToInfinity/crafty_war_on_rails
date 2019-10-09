@@ -1,0 +1,21 @@
+<% if @character.errors.any? %>
+    <% @character.errors.full_messages.each do |message| %>
+        <%= message %>
+    <%end%>
+<%end%>
+
+<h1>Create a Character!</h1>
+
+<%= form_for(@character) do |f| %>
+    <h3>Name:</h3>
+    <%= f.text_field :name %>
+    <h3>Race:</h3>
+    <%= f.collection_select :race_id, Race.all, :id, :name %>
+    <h3>Battle Class:</h3>
+    <%= f.collection_select :battle_class_id, BattleClass.all, :id, :name %>
+    <h3>Profession:</h3>
+    <%= f.collection_select :profession_id, Profession.all, :id, :name %>
+    <h3>User:</h3>
+    <%= f.collection_select :user_id, User.all, :id, :name %>
+    <%= f.submit "Create your DESTINY!" %>
+<%end%>

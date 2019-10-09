@@ -1,0 +1,13 @@
+<h1>Modify <%=@character.name%>!</h1>
+
+<%= form_for(@character) do |f| %>
+    <h3>Name:</h3>
+    <%= f.text_field :name %>
+    <h3>Race:</h3>
+    <%= f.collection_select :race_id, Race.all, :id, :name %>
+    <h3>Battle Class:</h3>
+    <%= f.collection_select :battle_class_id, BattleClass.all, :id, :name %>
+    <h3>Profession:</h3>
+    <%= f.collection_select :profession_id, Profession.all, :id, :name %>
+    <%= f.submit "Change your DESTINY!" %>
+<%end%>
